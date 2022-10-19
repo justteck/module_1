@@ -19,4 +19,3 @@
   console.log('Product name:', product);
   console.log('Total price:', productQuantity * productPrice);
 }
-
