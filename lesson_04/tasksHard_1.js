@@ -27,6 +27,8 @@ if (salaryProgr <= 15000) {
   console.log(`Налог составит: ${resultTax}`);
 
 } else if (salaryProgr > 50000) {
+
   resultTax = lowTax + middleTax + Number(((salaryProgr - 50000) * 0.3).toFixed(2));
   console.log(`Налог составит: ${resultTax}`);
+  
 }
