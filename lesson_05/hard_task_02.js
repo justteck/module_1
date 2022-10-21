@@ -7,5 +7,5 @@ const findMaxNumber = (firstNum, secondNum) => {
   const a = firstNum;
   const b = secondNum;
 
-  
+  const sign = Math.sign(a - b);
 }
