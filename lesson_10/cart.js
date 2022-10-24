@@ -2,11 +2,14 @@
 
 const cart = {
   items: [],
-  totalPrice: 0,
   count: 0,
 
-  getTotalPrice() {
-    return this.totalPrice;
+  get totalPrice() {
+    return this.calculateItemPrice();
+  },
+
+  set totalPrice(value) {
+    // Сеттер не нужен?
   },
 
   add(name, cost, quantity) {
@@ -22,7 +25,6 @@ const cart = {
 
     this.items.push(item);
     this.increaseCount(productQuantity);
-    this.calculateItemPrice();
   },
 
   increaseCount(num) {
@@ -30,7 +32,7 @@ const cart = {
   },
 
   calculateItemPrice() {
-    this.totalPrice = this.items.reduce((acc, current) =>
+    return this.items.reduce((acc, current) =>
       acc + (current.productCost * current.productQuantity), 0);
   },
 
@@ -58,7 +60,7 @@ cart.add('Peach', 100, 2);
 
 cart.print();
 
-console.log('Total price: ', cart.getTotalPrice());
+console.log('Total price: ', cart.totalPrice);
 
 cart.clear();
 
