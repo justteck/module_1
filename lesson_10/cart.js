@@ -46,9 +46,9 @@ const cart = {
     if (this.items.length === 0) {
       console.log('Card is empty');
     } else {
-      this.items.forEach(item => console.log(`${item.productName} : ${JSON.stringify(item)}`));
+      this.items.forEach(item =>
+        console.log(`${item.productName} : ${JSON.stringify(item)}`));
     }
-    
   },
 };
 
