@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+</head>
+<body>
+  <script>
+    // original function
+    function work(a, b) {
+      console.log('( a + b ): ', ( a + b ));
+    }
+
+    // decorator
+    function spy(func) {
+      let wrapper = function(...arg) {
+        wrapper.calls.push(arg);
+
+        func(...arg);
+      };
+      wrapper.calls = [];
+      return wrapper;
+    }
+
+    // do
+    work = spy(work);
+
+    work(1, 2); // 3
+    work(4, 5); // 9
+    
+    console.log(work.calls);
+
+    for (let args of work.calls) {
+      console.log( 'call:' + args.join() ); // "call:1,2", "call:4,5"
+    }
+  </script>
+</body>
+</html>
