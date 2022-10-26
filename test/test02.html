@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+</head>
+<body>
+  <script>
+    const sayHello = (name, surname) => {
+      console.log(`Hello, ${name} ${surname}`);
+    }
+
+    const debounce = (func, ms) => {
+      let isCooldown = false;
+
+      const wrapper = (...arg) => {
+        if (isCooldown) {
+          return;
+        }
+
+        func.apply(this, arg);
+        isCooldown = true;
+
+        setTimeout(() => isCooldown = false, ms);
+      };
+
+      return wrapper;
+    }
+
+    let f = debounce(sayHello, 2000);
+
+    f('Evgen', 'Lazaev'); // выполняется немедленно
+    f('Kuzma', 'Petricky'); // проигнорирован
+
+    setTimeout( () => f('Petr', 'Robotov'), 100); // проигнорирован (прошло только 100 мс)
+    setTimeout( () => f('Petr', 'Robotov'), 1100); // выполняется
+    setTimeout( () => f('Kuzma', 'Petricky'), 5000); // проигнорирован
+  </script>
+</body>
+</html>

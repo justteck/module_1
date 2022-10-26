@@ -2,23 +2,21 @@
 
 // Проверка, ввел ли пользователь число
 const checkStringNumber = (str) => {
-  const number = str;
+  if (str === '' || Number.isNaN(+str)) {
 
-  if (number === '' || Number.isNaN(+number)) {
     return false;
+
   } else return true;
-}
+};
 
 // Проверка на нажатие отмены при вводе
 const isEnteredNull = (num) => {
-  const number = num;
+  if (num === null) {
 
-  if (number === null) {
     return true;
-  } else {
-    return false;
-  } 
-}
+
+  } else return false;
+};
 
 // Создает число из строки
 const createNumber = (str) => {
@@ -36,8 +34,7 @@ const createNumber = (str) => {
       }
     } else return null;
   }
-}
-
+};
 
 // Игра
 const game = () => {

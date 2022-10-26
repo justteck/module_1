@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+</head>
+<body>
+  <script>
+    'use strict';
+    function f(x) {
+      console.log(x);
+    }
+
+    const delay = function(func, time) {
+      return function(...args) {
+        setTimeout(function() {
+          func.apply(this, args);
+        }, time);
+      };
+    };
+
+    // создаём обёртки
+    let f1000 = delay(f, 3000);
+    let f1500 = delay(f, 8000);
+
+    f1000("test"); // показывает "test" после 1000 мс
+    f1500("test"); // показывает "test" после 1500 мс
+  </script>
+</body>
+</html>

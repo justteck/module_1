@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+</head>
+<body>
+  <script>
+    const sayHello = (name, surname) => {
+      console.log(`Hello, ${name} ${surname}`);
+    }
+
+    const debounce = (func, ms) => {
+      let isThrottle = false,
+        curThis,
+        curArgs;
+
+      const wrapper = (...arg) => {
+        if (isThrottle) {
+          curThis = this;
+          curArgs = arg;
+          return;
+        }
+
+        func.apply(this, arg);
+        isThrottle = true;
+
+        setTimeout(() => {
+          isThrottle = false;
+
+          if (curArgs) {
+            wrapper.apply(curThis, curArgs);
+            curThis = curArgs = null;
+          }
+        }, ms);
+      };
+
+      return wrapper;
+    }
+
+    let f = debounce(sayHello, 2000);
+
+    f('Evgen', 'Lazaev'); // выполняется немедленно
+    f('Kuzma', 'Petricky'); // проигнорирован
+
+    setTimeout( () => f('Petrooo', 'Rooooobotov'), 100); // проигнорирован (прошло только 100 мс)
+    setTimeout( () => f('Petr', 'Robotov'), 1100); // выполняется
+    setTimeout( () => f('Kuzma', 'Petricky'), 1900); // проигнорирован
+  </script>
+</body>
+</html>
