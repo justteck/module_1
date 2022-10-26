@@ -5,13 +5,13 @@
 // они же должны защищать пременные?
 
 const rectangle = {
-  set width(num) {
+  set setWidth(num) {
     if (Number.isFinite(num)) {
       this._width = num;
     } else this._width = 5;
   },
 
-  set height(num) {
+  set setHeight(num) {
     if (Number.isFinite(num)) {
       this._height = num;
     } else this._height = 5;
@@ -26,8 +26,8 @@ const rectangle = {
   },
 };
 
-rectangle.width = 10;
-rectangle.height = 20;
+rectangle.setWidth = 10;
+rectangle.setHeight = 20;
 
 console.log(rectangle.area);
 console.log(rectangle.perimetr);
