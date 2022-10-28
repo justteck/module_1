@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+</head>
+<body>
+  <script>
+    var incrementUntil = function(max) {
+    var inc = function(num) { 
+        if(num >= max) return num 
+        return inc(num+1)
+      }
+      return inc
+  }
+    
+  console.log('incrementUntil(4)(1): ', incrementUntil(4)(1));
+  console.log('incrementUntil(8)(3): ', incrementUntil(8)(3));
+
+  var num = 1
+  console.log('var num = 1: ', num);
+  console.log('incrementUntil(8)(num): ', incrementUntil(8)(num));
+  console.log('var num = 1: ', num);
+
+  num //> 1 .... Good! Our function is pure!
+  </script>
+</body>
+</html>
