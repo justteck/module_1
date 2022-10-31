@@ -200,7 +200,8 @@
       }
 
       if (isPlayersTurn) {
-        let playerBet = prompt('Загадайте число и введите в строку:');
+        let playerBet = prompt(`Загадайте число
+от 1 до ${playerPoints} и введите в строку:`);
         const botGuessOdd = isOdd(getRandomIntInclusive(1, 2));
 
         console.log('playerBet: ', playerBet);

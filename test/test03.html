@@ -9,6 +9,7 @@
 </head>
 <body>
   <script>
+    'use strict';
     const sayHello = (name, surname) => {
       console.log(`Hello, ${name} ${surname}`);
     }
@@ -21,18 +22,21 @@
       const wrapper = (...arg) => {
         if (isThrottle) {
           curThis = this;
+          console.log('curThis: ', curThis);
           curArgs = arg;
+          console.log('curArgs: ', curArgs);
           return;
         }
 
-        func.apply(this, arg);
+        func(...arg);
         isThrottle = true;
 
         setTimeout(() => {
           isThrottle = false;
 
           if (curArgs) {
-            wrapper.apply(curThis, curArgs);
+            console.log('curArgs: ', curArgs);
+            wrapper(...curArgs);
             curThis = curArgs = null;
           }
         }, ms);
@@ -41,7 +45,7 @@
       return wrapper;
     }
 
-    let f = debounce(sayHello, 2000);
+    let f = debounce(sayHello, 1900);
 
     f('Evgen', 'Lazaev'); // выполняется немедленно
     f('Kuzma', 'Petricky'); // проигнорирован
